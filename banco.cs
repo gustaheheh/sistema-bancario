@@ -231,7 +231,7 @@ public class Program
         Console.Write("Qual é a quantidade de dinheiro que você tem atualmente? ");
         int dinheiroConta = int.Parse(Console.ReadLine());
         
-        Banco gusta = new Banco(nomeConta, dinheiroConta);
+        Banco usuario = new Banco(nomeConta, dinheiroConta);
         
         Console.Clear();
         
@@ -249,27 +249,27 @@ public class Program
                
                 case 1:
                 Console.Clear();
-                gusta.Depositar();
+                usuario.Depositar();
                 break;
 
                 case 2:
                 Console.Clear();
-                gusta.Sacar();
+                usuario.Sacar();
                 break;
 
                 case 3:
                 Console.Clear();
-                gusta.Pix();
+                usuario.Pix();
                 break;
 
                 case 4:
                 Console.Clear();
-                gusta.ListaPix();
+                usuario.ListaPix();
                 break;
 
                 case 5:
                 Console.Clear();
-                gusta.detalhesConta();
+                usuario.detalhesConta();
                 break;
 
                 case 6:
