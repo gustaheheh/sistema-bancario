@@ -62,19 +62,19 @@ public class Banco
         Console.WriteLine("");
     }
 
-    public void Depositar()
+    public void guardarDinheiro()
     {
         
-        ajustarLinhas("Selecione a quantidade de dinheiro que você deseja depositar");
+        ajustarLinhas("Selecione a quantidade de dinheiro que você deseja guardar");
 
-        var _quantDinheiro = Console.ReadLine();
-        if (int.TryParse(_quantDinheiro, out int quantDinheiro))
+        var _quantGuardar = Console.ReadLine();
+        if (int.TryParse(_quantGuardar, out int quantGuardar))
         {
-            if (quantDinheiro <= 0)
+            if (quantGuardar<= 0)
             {
-                ajustarLinhas("ERRO: Você não pode depositar valores negativos ou inválidos.");
+                ajustarLinhas("ERRO: Você não pode guardar valores negativos ou inválidos.");
             } 
-            else if (quantDinheiro > dinheiro)
+            else if (quantGuardar > dinheiro)
             {
                 ajustarLinhas("ERRO: Você não pode guardar um valor superior ao seu saldo atual.");
             }
@@ -82,7 +82,7 @@ public class Banco
             else
             {
                 
-            Console.WriteLine($"Você depositou o valor de R$ {quantDinheiro} \nDeseja manter esta escolha?");
+            Console.WriteLine($"Você guardou o valor de R$ {quantGuardar} \nDeseja manter esta escolha?");
             Console.WriteLine("1. Sim \n2. Não");
 
             string entrada = Console.ReadLine();
@@ -91,12 +91,12 @@ public class Banco
             switch (escolha)
             {
                 case "sim":
-                dinheiroGuardado += quantDinheiro;
-                this.dinheiro -= quantDinheiro;
+                dinheiroGuardado += quantGuardar;
+                this.dinheiro -= quantGuardar;
                 break;
 
                 case "não":
-                quantDinheiro = 0;
+                quantGuardar = 0;
                 ajustarLinhas("Ação desfeita.");
                 Console.WriteLine("");
                 break;
@@ -112,28 +112,28 @@ public class Banco
         
     }
     
-    public void Sacar()
+    public void retirarDinheiro()
     {
 
-        ajustarLinhas("Selecine a quantidade de dinheiro que você deseja sacar:");
+        ajustarLinhas("Selecine a quantidade de dinheiro que você deseja resgatar:");
         
-        var _quantSacar = Console.ReadLine();
-        if (int.TryParse(_quantSacar, out int quantSacar))
+        var _quantResgate = Console.ReadLine();
+        if (int.TryParse(_quantResgate, out int quantResgate))
         {
            
-            if (quantSacar > dinheiroGuardado)
+            if (quantResgate > dinheiroGuardado)
             {
-                ajustarLinhas("ERRO: Você não tem saldo suficiente para sacar.");
+                ajustarLinhas("ERRO: Você não tem dinheiro guardado o suficiente para resgatar.");
             }
-            else if (quantSacar <= 0)
+            else if (quantResgate <= 0)
             {
-                Console.WriteLine("ERRO: Você não pode depositar valores negativos ou inválidos.");
+                Console.WriteLine("ERRO: Você não pode resgatar valores negativos ou inválidos.");
             }
             
             else
             {
                 
-                ajustarLinhas($"Você está prestes a sacar R$ {quantSacar} \nDeseja manter esta escolha?");
+                ajustarLinhas($"Você está prestes a resgatar R$ {quantResgate} \nDeseja manter esta escolha?");
                 Console.WriteLine("1. Sim \n2. Não");
 
                 string entrada = Console.ReadLine();
@@ -142,12 +142,12 @@ public class Banco
                 switch (escolha)
                 {
                     case "sim":
-                    dinheiro += quantSacar;
-                    dinheiroGuardado -= quantSacar;
+                    dinheiro += quantResgate;
+                    dinheiroGuardado -= quantResgate;
                     break;
 
                     case "não":
-                    quantSacar = 0;
+                    quantResgate = 0;
                     ajustarLinhas("Ação desfeita.");
                     Console.WriteLine("");
                     break;
@@ -249,12 +249,12 @@ public class Program
                
                 case 1:
                 Console.Clear();
-                usuario.Depositar();
+                usuario.guardarDinheiro();
                 break;
 
                 case 2:
                 Console.Clear();
-                usuario.Sacar();
+                usuario.retirarDinheiro();
                 break;
 
                 case 3:
